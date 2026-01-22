@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Sag’s oder Tu’s – Teen Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #020617;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 100px;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .sag {
+      background: #22c55e;
+      color: #022c22;
+    }
+
+    .tu {
+      background: #38bdf8;
+      color: #042f2e;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Sag’s oder Tu’s</h1>
+  <div class="card" id="output">
+    Drück einen Button 👇
+  </div>
+  <button class="sag" onclick="drawCard('sag')">🗣 SAG’S</button>
+  <button class="tu" onclick="drawCard('tu')">🎭 TU’S</button>
+</div>
+
+<script>
+  const sagsOriginal = [
+    "Welche App öffnest du am Tag am häufigsten?",
+    "Was ist deine schlechteste Ausrede ever?",
+    "Welches Emoji passt gerade zu dir?",
+    "Was kannst du gar nicht, obwohl es leicht ist?",
+    "Was war dein letzter unnötiger Kauf?",
+    "Welche Serie ist überbewertet?",
+    "Was würdest du sofort verbieten?",
+    "Was nervt dich heimlich richtig?",
+    "Welches Wort sagst du zu oft?",
+    "Was ist dein unlogischster Tick?",
+    "Welche Süßigkeit ist absoluter Trash?",
+    "Was war dein peinlichster Mode-Fail?",
+    "Welche Fähigkeit wär unnütz aber cool?",
+    "Was würdest du niemals posten?",
+    "Welche App sollte es nicht geben?",
+    "Was war dein letzter Ohrwurm?",
+    "Was schmeckt besser als es aussieht?",
+    "Was ist beliebt, aber du checkst es nicht?",
+    "Was ist dein geheimes Talent?",
+    "Was würdest du tun, wenn heute schulfrei wär?",
+    "Welche Regel ist unnötig?",
+    "Was vergisst du ständig?",
+    "Was ist dein Guilty-Pleasure-Snack?",
+    "Welche Sache macht dich sofort alt?",
+    "Was war heute dein Highlight?"
+  ];
+
+  const tusOriginal = [
+    "Erfinde einen Werbeslogan für Wasser",
+    "Sprich wie ein Nachrichtensprecher über Pommes",
+    "Stelle einen Roboter mit Gefühlen dar",
+    "Erfinde ein neues Emoji",
+    "Lache künstlich – wer zuerst aufhört, verliert",
+    "Erkläre Pizza wissenschaftlich",
+    "Stelle einen Influencer ohne Worte dar",
+    "Erfinde einen neuen Feiertag",
+    "Sag deinen Namen dramatisch",
+    "Lauf wie ein Model",
+    "Mach 3 Tiergeräusche",
+    "Stelle Montagmorgen pantomimisch dar",
+    "Erfinde einen Mini-Tanz",
+    "Rede nur in Fragen",
+    "Stelle jemanden ohne Handy dar",
+    "Sei stolz auf etwas völlig Banales",
+    "Standbild: Ich hab Mist gebaut",
+    "Erkläre ein unsichtbares Objekt",
+    "Der Boden ist Lava",
+    "Erfinde einen Gruppennamen",
+    "Sprich extrem höflich",
+    "Stelle einen enttäuschten Lehrer dar",
+    "Verkaufe einen imaginären Gegenstand",
+    "Überreagiere auf gute Nachrichten",
+    "Einfrieren in epischer Pose"
+  ];
+
+  let sags = [...sagsOriginal];
+  let tus = [...tusOriginal];
+
+  function drawCard(type) {
+    let list = type === "sag" ? sags : tus;
+
+    if (list.length === 0) {
+      if (type === "sag") sags = [...sagsOriginal];
+      else tus = [...tusOriginal];
+      list = type === "sag" ? sags : tus;
+    }
+
+    const index = Math.floor(Math.random() * list.length);
+    const card = list.splice(index, 1)[0];
+    document.getElementById("output").innerText = card;
+  }
+</script>
+
+</body>
+</html>
